@@ -51,7 +51,6 @@ Assignment-3 for INFO20003-->
 						    $data = trim($data);
 						    $data = stripslashes($data);
 						    $data = htmlspecialchars($data);
-						    $data = strip_tags($data);
 						    return $data;
 					}
 					// Establishing connection
@@ -123,8 +122,8 @@ Assignment-3 for INFO20003-->
      						if($conditions[$i] != "")
      						{
      							$no_where_part = FALSE; 
-     							$where_part = $where_part.$params[$i]."=\"
-     							".$conditions[$i]."\") AND (";
+     							echo "hi".$conditions[$i];
+     							$where_part = $where_part.$params[$i]."=\"".trim($conditions[$i])."\") AND (";
      						}
      					}
      					// Remove the part that we don't need
@@ -153,19 +152,15 @@ Assignment-3 for INFO20003-->
 							if($no_answers)
 							{
 								 echo "<br /><table><tr>
-								<th>Spatula</th>
-								<th>Webpage</th></tr>";
+								<th>Spatula</th>";
 							}
 							$no_answers = FALSE;
 							echo "<tr>
-									<td><p>"
+									<td><a href='product-page.php?id="
+								. $row['idSpatula']
+								. "'>"
 								. $row['ProductName']
-								. "</a></td>
-									<td><p><a href='product-page.php?id="
-								. $row['idSpatula']
-								. "' >product-page.php?id="
-								. $row['idSpatula']
-								. "</a></td>
+								. "</td>
 									</tr>";
 						}
 						// Close off table only if it was created 
